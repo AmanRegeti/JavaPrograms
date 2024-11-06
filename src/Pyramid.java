@@ -1,3 +1,8 @@
+/*
+    java.lang is the library that is available to your program by default.
+    System class is a part of java.lang library.
+ */
+
 public class Pyramid {
     public static void main(String[] args) {
         System.out.println("11");
