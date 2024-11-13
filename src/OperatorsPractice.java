@@ -80,8 +80,33 @@ public class OperatorsPractice {
         boolean b3 = f>= 63;
         System.out.println("b3:" + b3);
 
-
+        // Logical  Operators. Returns boolean.
         // &&, ||, !, ==, !=
         // and, or, not, equals, not equals
+        int aa = 10;
+        int bb = 20;
+        // AND operator (&&)
+        // T && T = T
+        // T && F = F
+        // F && T = F
+        // F && F = F
+        boolean r1 = aa == 10 && bb == 20; // true
+        boolean r2 = aa != 10 && bb == 20; // false
+
+        // OR operator (||)
+        // T || T = T
+        // T || F = T
+        // F || T = T
+        // F || F = F
+        boolean r3 = aa == 10 || bb == 30; // true
+
+        // NOT operator(!)
+        boolean r4 = !(aa == 10 && bb == 20); // false
+
+        // NOT EQUAL (!=)
+        boolean r5 = aa != 20;  // true
+
+        boolean r6 = aa == 5*2;
+        System.out.println("r6:" + r6);
     }
 }
