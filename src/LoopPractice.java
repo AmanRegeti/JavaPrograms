@@ -6,7 +6,7 @@ public class LoopPractice {
         }
         System.out.println("outside the loop`");
         int b = 9;
-        for (int a = 5; a<b; a++){
+        for (int a = 5; a<b; a++) {
             System.out.println("a is equal to b");
         }
         for(int a= 1, c=10; a < c; a+=2,c++) {
