@@ -6,10 +6,8 @@ public class occurence {
         for (int i =0; i< a.length; i++){
             if (a[i] == target){
                 count++;
-
             }
         }
         System.out.println(target + " occurs " +count + " times ");
-
     }
 }
