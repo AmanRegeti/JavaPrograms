@@ -1,4 +1,4 @@
-public class findingduplicatesnovariables {
+public class FindingDuplicatesNoVriables {
     public static void main(String[] args)
     {
         boolean dupFound = false;
