@@ -5,8 +5,8 @@ public class GreaterThanNext {
 
                 if(a[i+1]<a[i]) {
 
-                    System.out.println(a[i+1]);
-                    System.out.println(a[i] - a[i+1]);
+                    System.out.println("element is "+ a[i+1]);
+                    System.out.println("the difference is " + (a[i] - a[i+1]));
                 }
 
         }
