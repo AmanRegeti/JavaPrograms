@@ -10,5 +10,15 @@ public class GreaterThanNext {
                 }
 
         }
+        System.out.println("-------------------------");
+        for (int i = 1; i < a.length; i++) {
+
+            if(a[i-1]>a[i]) {
+
+                System.out.println("element is "+ a[i]);
+                System.out.println("the difference is " + (a[i] - a[i+1]));
+            }
+
+        }
     }
 }
