@@ -20,14 +20,31 @@ public class removeDuplicates {
     private static void removeDuplicates2(int[] a) {
         int[] temp = new int[a.length];
         int next = 0;
-        for (int i = 0; i<a.length;i++ ) {
-        int e1 = a[i];
+        for (int i = 0; i < a.length; i++) {
+            int e1 = a[i];
             boolean check = checkAnotherArray(temp, next, e1);
-            if()
+            if (!check) {
+                temp[i] = a[i];
+            }
         }
+        //System.out.println(Arrays.toString(temp));
+        System.out.print("Array a after removing duplicates : ");
+        a=temp;
+        System.out.println(Arrays.toString(a));
+
     }
 
-    private static boolean checkAnotherArray(int[] temp, int next, int element) {
 
+    private static boolean checkAnotherArray(int[] temp, int next, int element) {
+        for (int j = 0; j < temp.length; j++) {
+            if (temp[j] == element) {
+                return true;
+
+
+            }
+
+
+        }
+        return false;
     }
 }
