@@ -24,22 +24,21 @@ public class removeDuplicates {
             int e1 = a[i];
             boolean check = checkAnotherArray(temp, next, e1);
             if (!check) {
-                temp[i] = a[i];
+                temp[next] = a[i];
+                next++;
             }
         }
         //System.out.println(Arrays.toString(temp));
-        System.out.print("Array a after removing duplicates : ");
-        a=temp;
-        System.out.println(Arrays.toString(a));
+        System.out.print("Array after removing duplicates : ");
+        System.out.println(Arrays.toString(temp));
 
     }
 
 
     private static boolean checkAnotherArray(int[] temp, int next, int element) {
-        for (int j = 0; j < temp.length; j++) {
+        for (int j = 0; j < next; j++) {
             if (temp[j] == element) {
                 return true;
-
 
             }
 
