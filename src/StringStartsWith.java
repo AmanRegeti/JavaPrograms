@@ -1,30 +1,37 @@
 public class StringStartsWith {
     public static void main(String[] args) {
-        String name = "Aman Regeti";
+        String name = "Abcd";
         String prefix = "Aman";
         char[] chars = name.toCharArray();
         char[] prefixArray = prefix.toCharArray();
         checking(prefixArray, chars);
     }
+
     // todo: time complexity
     private static void checking(char[] prefix, char[] chars) {
-        int count =0;
+        int count = 0;
         for (int i = 0; i < prefix.length; i++) {
-            boolean isPrefix = isPrefix(prefix, chars, i);
+            char p1= prefix[i];
+            char c1 = chars[i];
+            boolean isPrefix = isPrefix(p1, c1);
             if (isPrefix) {
                 count++;
             }
+            else{
+                break;
+            }
+
         }
-        if(count== prefix.length){
+        if (count == prefix.length) {
             System.out.println("Prefix");
-        }
-        else {
+        } else {
             System.out.println("Not Prefix");
+            System.out.println(count);
         }
     }
 
-    private static boolean isPrefix(char[] prefix, char[] chars,int i) {
-        if (chars[i]== prefix[i]){
+    private static boolean isPrefix(char p1, char c1) {
+        if (c1 == p1) {
             return true;
         }
         return false;
