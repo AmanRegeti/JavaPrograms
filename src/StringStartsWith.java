@@ -1,6 +1,6 @@
 public class StringStartsWith {
     public static void main(String[] args) {
-        String name = "Abcd";
+        String name = "Aman Regeti";
         String prefix = "Aman";
         char[] chars = name.toCharArray();
         char[] prefixArray = prefix.toCharArray();
