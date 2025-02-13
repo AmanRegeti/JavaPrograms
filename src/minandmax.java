@@ -7,7 +7,7 @@ public class minandmax {
         for (int i=1; i<a.length; i++  ){
             if (a[i]> hv){
                 hv= a[i];
-
+//
             }
 
         }
