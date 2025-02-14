@@ -1,7 +1,7 @@
 public class ArrayPractice {
     public static void main(String[] args) {
         int[] array = {11, 34, 23, 67, 90};
-
+//Added a new line
         int[] array2 = new int[5];
         array2[0] = 11;
         array2[1] = 34;
