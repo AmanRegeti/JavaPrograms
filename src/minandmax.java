@@ -1,4 +1,4 @@
-public class MinAndMax {
+public class minandmax {
     public static void main(String[] args) {
         int[] a = {89, 34, 23, 67, 45, 33, 21, 75, 42, 91};
         minMaxDifferentLoops(a);
