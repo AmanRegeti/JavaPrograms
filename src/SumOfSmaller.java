@@ -14,11 +14,14 @@ public class SumOfSmaller {
                 int a2 = a[j];
 
                 if (a2 < a1) {
+                    //check if the number is smaller
                     sum= AddingSmaller(a1,a2);
                     for (int k = 0; k < a.length; k++) {
                         int a3 = a[k];
                         if (sum>a[k]){
+                            //checking if the sum is more than the number
                             int Fsum=AddingSmaller(sum,a3) ;
+                            //adding
                             System.out.println(Fsum);
                             break;
                         }
@@ -35,7 +38,7 @@ public class SumOfSmaller {
 
         private static int AddingSmaller ( int a1, int a2){
             int sum = a1 + a2;
-
+//adding the numbers
             return sum;
         }
 
