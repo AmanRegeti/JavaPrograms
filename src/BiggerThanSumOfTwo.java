@@ -9,47 +9,34 @@ public class BiggerThanSumOfTwo {
 
     private static void sum(int[] a) {
         for (int i = 1; i < a.length; i++) {
-            boolean isDone = false;
             int sum = a[i] + a[i - 1];
-            int FSum = sum;
-            int Fsum = findSmaller(a, i, sum, FSum, isDone);
-            if (isDone || Fsum == -1) {
-                if (i != a.length - 1) {
-                    System.out.println("No smaller");
-                }
-            }
-            if (i == a.length - 1) {
-                System.out.println(sum);
-            }
+            int fSum = findSmaller(a, i, sum);
+            System.out.println(fSum);
 
         }
     }
 
-    private static int findSmaller(int[] a, int i, int FSum, int sum, boolean isDone) {
-        for (int j = i + 1; j < a.length; j++) {
+    private static int findSmaller(int[] a, int start, int sum) {
+        int fSum= sum;
+        for (int j = start + 1; j < a.length; j++) {
             int a1 = a[j];
+
             boolean isSmall = isSmall(a1, sum);// pass by value
             if (isSmall) {
-                FSum = FSum + a1;
-                System.out.println(FSum);
-                isDone = true;
-                return FSum;
-
-
-            } /*else if (i == a.length) {
-                System.out.println(sum);
+                fSum=add(sum, a1);
             }
-            if (a.length - 2 == i) {
-                System.out.println(FSum);
-                return FSum;
-            }*/
         }
-        return -1;
+        return fSum;
     }
 
     private static boolean isSmall(int a1, int sum) {
         return a1 < sum;
     }
 
+    private static int add(int sum, int a1) {
+        int finalSum = sum + a1;
+        //System.out.println(finalSum);
 
+        return finalSum;
+    }
 }
