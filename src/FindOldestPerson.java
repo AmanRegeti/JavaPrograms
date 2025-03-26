@@ -2,7 +2,7 @@ public class FindOldestPerson {
     public static void main(String[] args) {
         Person p1 = new Person();
         p1.name = "John";
-        p1.age = 13.6f;
+        p1.age = 12.5f;
         p1.height = 5.7f;
         p1.weight = 70.5f;
         Person p2 = new Person();
