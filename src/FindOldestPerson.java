@@ -17,6 +17,7 @@ public class FindOldestPerson {
         p3.weight=69f;
         Person[] people = {p1,p2,p3};
         FindOldest(people);
+        //FindYoungest(people);
     }
     private static void FindOldest(Person[] people){
         float Oldest=people[0].age;
@@ -29,6 +30,19 @@ public class FindOldestPerson {
             }
         }
         System.out.println(Name +" is "+Oldest+" years old");
+
+    }
+    private static void FindYoungest(Person[] people){
+        float Youngest =people[0].age;
+        String Name= people[0].name;
+        for (int i = 1; i < people.length; i++) {
+            if (people[i].age < Youngest) {
+                Youngest = people[i].age;
+                Name = people[i].name;
+
+            }
+        }
+        System.out.println(Name +" is "+Youngest+" years old");
 
     }
 }

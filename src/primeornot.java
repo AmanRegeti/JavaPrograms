@@ -21,9 +21,9 @@ public class primeornot {
 //        }
 
         //Method 2 - without Bool variable
-        int n=15;
+        int n=8;
 
-        for (int i=2; i<n; i++ ){
+        for (int i=2; i*i<= n; i++ ){
             if (n % i ==0)
             {
                 System.out.println(n  + " is not a prime number");
