@@ -32,19 +32,19 @@ public class ReOrderThePeople {
         p6.name = "Oliver";
         p6.height = 6.10f;
         p6.age = 40;
-        p6.weight = 47;Person[] people = {p3, p4, p5, p6, p1, p2};
+        p6.weight = 47;
+        Person[] people = {p3, p4, p5, p6, p1, p2};
 
         reOrder(people);
         System.out.println(Arrays.toString(people));
     }
 
     private static void reOrder(Person[] people) {
-        Person temp= people[people.length-1];
-        ShiftRight(people);
-        people[0]= temp;
-        Person temp2= people[people.length-1];
-        ShiftRight(people);
-        people [0]= temp;
+        for (int i = 0; i < 2; i++) {
+            Person temp= people[people.length-1];
+            ShiftRight(people);
+            people[0]= temp;
+        }
     }
     private static void ShiftRight(Person[] people){
         for (int i = 0, j = i + 1; j < people.length; i++,j++) {
