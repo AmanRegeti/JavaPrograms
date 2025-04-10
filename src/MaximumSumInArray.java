@@ -1,6 +1,10 @@
 public class MaximumSumInArray {
     public static void main(String[] args) {
-        int[] a = {-5, -1, -3, 1, -6, -4, -1, -2, -9, 2, 9};
+        //int[] a = {4,-100,4,-100,4,-100,4,-100};
+        //int[] a = {-2,1,-3,4,-1,2,1,-5,4};
+        //int[] a = {-1,5,4,-1,7,8,2};
+        //int[] a = {-2,-2,-1};
+        int[] a = {1};
         FindMax(a);
     }
 
@@ -8,6 +12,7 @@ public class MaximumSumInArray {
         int Max = a[0];
         int k=-1;
         int l=-1;
+        //{ -2,1,-3,4,-1,2,1,-5,4}; 6
         for (int i = 0; i < a.length; i++) {
             int e1 = a[i];
             int cSum = e1;
@@ -17,7 +22,7 @@ public class MaximumSumInArray {
                 if (i == j) {
                     cSum = cSum / 2;
                 }
-                if (cSum > Max) {
+                if (cSum >= Max) {
                     Max = cSum;
                     k = i;
                     l = j;
