@@ -3,7 +3,7 @@ import java.util.Objects;
 
 public class MyArrayList {
     private int[] a;
-    // default constructor  - empty constructor without any parameters
+    // dbefault constructor  - empty constructor without any parameters
     // If you don't have any other constructor(s), default one is implicitly added.
     // You can override a default constructor as done below.
     public MyArrayList() {
