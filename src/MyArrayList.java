@@ -3,7 +3,7 @@ import java.util.Objects;
 
 public class MyArrayList {
     private int[] a;
-    // dbefault constructor  - empty constructor without any parameters
+    // default constructor  - empty constructor without any parameters
     // If you don't have any other constructor(s), default one is implicitly added.
     // You can override a default constructor as done below.
     public MyArrayList() {
@@ -17,7 +17,20 @@ public class MyArrayList {
     public MyArrayList(int size) {
         this.a = new int[size];
     }
+    public int get(int index) {
+        // todo: handle wrong index numbers.
+        return a[index];
+    }
+    public int put(int index, int element) {
 
+    }
+/*
+The equals checks if the two are equal
+p1.equals(p2) would check if p1 is equal to p2
+
+The hashcode is an easy way to store and find an element in a limited space array
+
+ */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
