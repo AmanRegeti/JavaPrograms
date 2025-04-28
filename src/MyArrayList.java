@@ -3,12 +3,15 @@ import java.util.Objects;
 
 public class MyArrayList {
     private int[] a;
+    private int next = 0;
+
     // default constructor  - empty constructor without any parameters
     // If you don't have any other constructor(s), default one is implicitly added.
     // You can override a default constructor as done below.
     public MyArrayList() {
         this.a = new int[8];
     }
+
     //constructors are a special type of function without a return type
     //new operators create new objects
     //this, is a current object
@@ -17,20 +20,51 @@ public class MyArrayList {
     public MyArrayList(int size) {
         this.a = new int[size];
     }
+
+    public static void main(String[] args) {
+        MyArrayList list1 = new MyArrayList(); // used a default constructor
+        MyArrayList list2 = new MyArrayList(10); // used a parameterized constructor
+        System.out.println(list1);
+
+    }
+
     public int get(int index) {
         // todo: handle wrong index numbers.
         return a[index];
+
     }
+
     public int put(int index, int element) {
-
+        // todo: handle invalid index numbers
+        int temp = a[index];
+        a[index] = element;
+        return temp;
     }
-/*
-The equals checks if the two are equal
-p1.equals(p2) would check if p1 is equal to p2
 
-The hashcode is an easy way to store and find an element in a limited space array
+    public void add(int element) {
+        // todo: expand an array, if required
+        a[next] = element;
+        next++;
+    }
 
- */
+    public int remove(int index) {
+        // todo: handle invalid index number
+        int temp = a[index];
+        a[index] = 0;
+        for (int i = index; i < a.length-1; i++) {
+            a[index]=a[index+1];
+        }
+        // todo: contract an array, if required
+        return temp;
+    }
+
+    /*
+    The equals checks if the two are equal
+    p1.equals(p2) would check if p1 is equal to p2
+
+    The hashcode is an easy way to store and find an element in a limited space array
+
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -43,6 +77,7 @@ The hashcode is an easy way to store and find an element in a limited space arra
     public int hashCode() {
         return Arrays.hashCode(a);
     }
+
     /*
         Object class is a parent class of all the classes.
         It has a toString() method.
@@ -55,11 +90,5 @@ The hashcode is an easy way to store and find an element in a limited space arra
         return "MyArrayList{" +
                 "a=" + Arrays.toString(a) +
                 '}';
-    }
-
-    public static void main(String[] args) {
-        MyArrayList list1 = new MyArrayList(); // used a default constructor
-        MyArrayList list2 = new MyArrayList(10); // used a parameterized constructor
-        System.out.println(list1);
     }
 }
