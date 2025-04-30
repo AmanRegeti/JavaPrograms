@@ -46,16 +46,41 @@ public class MyArrayList {
         a[next] = element;
         next++;
     }
+    public void expand(){
+        int count=0;
+        boolean change = false;
+        for (int i = 0; i < a.length; i++) {
+            HowManyZeros(i,count);
+            boolean change= ShouldExpand(count);
+        }
+        if (change==true){
+            
+        }
+    }
+    private void HowManyZeros(int i,int count){
+        if (i==0){
+            count++;
+        }
+    }
+    
+    private boolean ShouldExpand(int count){
+        if (count<=3){
+            return true;
+        }
+        return false;
+    }
 
     public int remove(int index) {
         // todo: handle invalid index number
         int temp = a[index];
-        a[index] = 0;
-        for (int i = index; i < a.length-1; i++) {
-            a[index]=a[index+1];
-        }
+        shiftLeft(index, a);
         // todo: contract an array, if required
         return temp;
+    }
+    private void shiftLeft(int index, int[] a){
+        for (int i = index+1; i <= next; i++) {
+            a[i-1]=a[i];
+        }
     }
 
     /*
