@@ -4,7 +4,6 @@ import java.util.Objects;
 public class MyArrayList {
     private int[] a;
     private int next = 0;
-
     // default constructor  - empty constructor without any parameters
     // If you don't have any other constructor(s), default one is implicitly added.
     // You can override a default constructor as done below.
@@ -22,9 +21,11 @@ public class MyArrayList {
     }
 
     public static void main(String[] args) {
-        MyArrayList list1 = new MyArrayList(); // used a default constructor
-        MyArrayList list2 = new MyArrayList(10); // used a parameterized constructor
-        System.out.println(list1);
+        //MyArrayList list1 = new MyArrayList(); // used a default constructor
+        MyArrayList list2 = new MyArrayList(3); // used a parameterized constructor
+        //System.out.println(list1);
+        list2.add(11);
+        System.out.println(list2);
 
     }
 
@@ -42,29 +43,27 @@ public class MyArrayList {
     }
 
     public void add(int element) {
-        // todo: expand an array, if required
+        expand();
         a[next] = element;
         next++;
     }
     public void expand(){
-        int count=0;
-        boolean change = false;
-        for (int i = 0; i < a.length; i++) {
-            HowManyZeros(i,count);
-            boolean change= ShouldExpand(count);
-        }
+        boolean change= shouldExpand();
         if (change==true){
-            
+            int[] b= new int[a.length*2];
+            copy(a,b);
+            a=b;
         }
     }
-    private void HowManyZeros(int i,int count){
-        if (i==0){
-            count++;
+    private void copy(int[] a, int[] b){
+        for (int i = 0; i < next ; i++) {
+            b[i]=a[i];
         }
     }
-    
-    private boolean ShouldExpand(int count){
-        if (count<=3){
+
+    private boolean shouldExpand(){
+        int blankSpaces = ((a.length-1)-next)+1;
+        if (blankSpaces<=3){
             return true;
         }
         return false;
@@ -116,4 +115,5 @@ public class MyArrayList {
                 "a=" + Arrays.toString(a) +
                 '}';
     }
+
 }
