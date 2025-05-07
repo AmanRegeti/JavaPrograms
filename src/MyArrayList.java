@@ -22,11 +22,32 @@ public class MyArrayList {
 
     public static void main(String[] args) {
         //MyArrayList list1 = new MyArrayList(); // used a default constructor
-        MyArrayList list2 = new MyArrayList(3); // used a parameterized constructor
+        MyArrayList list2 = new MyArrayList(8); // used a parameterized constructor
         //System.out.println(list1);
         list2.add(11);
+        list2.add(12);
+        list2.add(13);
+        list2.add(14);
+        list2.add(15);
+        list2.add(16);
+        System.out.println("After add");
         System.out.println(list2);
+        list2.remove(0);
+        list2.remove(0);
+        list2.remove(0);
+        list2.remove(0);
+        list2.remove(0);
+        list2.remove(0);
 
+        System.out.println("After remove");
+        System.out.println(list2);
+        list2.add(11);
+        list2.add(12);
+        System.out.println(list2);
+        int element =list2.get(1);
+        System.out.println(element);
+        list2.put(7,52149);
+        System.out.println(list2);
     }
 
     public int get(int index) {
@@ -37,6 +58,10 @@ public class MyArrayList {
 
     public int put(int index, int element) {
         // todo: handle invalid index numbers
+        if(index>next){
+            System.out.println("Cannot place here");
+            return index;
+        }
         int temp = a[index];
         a[index] = element;
         return temp;
@@ -63,18 +88,35 @@ public class MyArrayList {
 
     private boolean shouldExpand(){
         int blankSpaces = ((a.length-1)-next)+1;
-        if (blankSpaces<=3){
+        if (blankSpaces <= 3){
             return true;
         }
         return false;
     }
 
     public int remove(int index) {
+
         // todo: handle invalid index number
         int temp = a[index];
         shiftLeft(index, a);
-        // todo: contract an array, if required
+        next--;
+        if(shouldcontract()) {
+            contraction();
+        }
         return temp;
+
+    }
+    private boolean shouldcontract(){
+        int blankSpaces =a.length-next;
+        if (blankSpaces>=((a.length/2)+3)){
+           return true;
+        }
+        return false;
+    }
+    private void contraction(){
+        int[] b=new int[a.length/2];
+        copy(a,b);
+        a=b;
     }
     private void shiftLeft(int index, int[] a){
         for (int i = index+1; i <= next; i++) {
