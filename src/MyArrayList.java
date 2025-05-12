@@ -4,6 +4,7 @@ import java.util.Objects;
 public class MyArrayList {
     private int[] a;
     private int next = 0;
+
     // default constructor  - empty constructor without any parameters
     // If you don't have any other constructor(s), default one is implicitly added.
     // You can override a default constructor as done below.
@@ -44,24 +45,28 @@ public class MyArrayList {
         list2.add(11);
         list2.add(12);
         System.out.println(list2);
-        int element =list2.get(1);
+        int element = list2.get(7);
         System.out.println(element);
-        list2.put(7,52149);
+        list2.put(7, 52149);
         System.out.println(list2);
     }
 
     public int get(int index) {
-        // todo: handle wrong index numbers.
+        if(!isValidIndex(index)) {
+            System.out.println("Index "+index+" is not valid");
+            return -1;// todo: throw an exception
+        }
+
         return a[index];
 
     }
 
     public int put(int index, int element) {
-        // todo: handle invalid index numbers
-        if(index>next){
-            System.out.println("Cannot place here");
-            return index;
+        if(!isValidIndex(index)) {
+            System.out.println("Index "+index+" is not valid");
+            return -1; // todo: throw an exception
         }
+
         int temp = a[index];
         a[index] = element;
         return temp;
@@ -72,55 +77,63 @@ public class MyArrayList {
         a[next] = element;
         next++;
     }
-    public void expand(){
-        boolean change= shouldExpand();
-        if (change==true){
-            int[] b= new int[a.length*2];
-            copy(a,b);
-            a=b;
-        }
-    }
-    private void copy(int[] a, int[] b){
-        for (int i = 0; i < next ; i++) {
-            b[i]=a[i];
+
+    public void expand() {
+        boolean change = shouldExpand();
+        if (change == true) {
+            int[] b = new int[a.length * 2];
+            copy(a, b);
+            a = b;
         }
     }
 
-    private boolean shouldExpand(){
-        int blankSpaces = ((a.length-1)-next)+1;
-        if (blankSpaces <= 3){
+    private void copy(int[] a, int[] b) {
+        for (int i = 0; i < next; i++) {
+            b[i] = a[i];
+        }
+    }
+
+    private boolean shouldExpand() {
+        int blankSpaces = ((a.length - 1) - next) + 1;
+        if (blankSpaces <= 3) {
             return true;
         }
         return false;
     }
 
     public int remove(int index) {
+        if(!isValidIndex(index)) {
+            System.out.println("Index "+index+" is not valid");
+            return -1; // todo: throw an exception
+        }
 
-        // todo: handle invalid index number
         int temp = a[index];
         shiftLeft(index, a);
         next--;
-        if(shouldcontract()) {
+        if (shouldcontract()) {
             contraction();
         }
         return temp;
 
     }
-    private boolean shouldcontract(){
-        int blankSpaces =a.length-next;
-        if (blankSpaces>=((a.length/2)+3)){
-           return true;
+
+    private boolean shouldcontract() {
+        int blankSpaces = a.length - next;
+        if (blankSpaces >= ((a.length / 2) + 3)) {
+            return true;
         }
         return false;
     }
-    private void contraction(){
-        int[] b=new int[a.length/2];
-        copy(a,b);
-        a=b;
+
+    private void contraction() {
+        int[] b = new int[a.length / 2];
+        copy(a, b);
+        a = b;
     }
-    private void shiftLeft(int index, int[] a){
-        for (int i = index+1; i <= next; i++) {
-            a[i-1]=a[i];
+
+    private void shiftLeft(int index, int[] a) {
+        for (int i = index + 1; i <= next; i++) {
+            a[i - 1] = a[i];
         }
     }
 
@@ -156,6 +169,9 @@ public class MyArrayList {
         return "MyArrayList{" +
                 "a=" + Arrays.toString(a) +
                 '}';
+    }
+    private boolean isValidIndex(int index){
+        return (index >= 0 && index <= next - 1);
     }
 
 }
