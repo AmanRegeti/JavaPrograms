@@ -1,9 +1,6 @@
 package exceptions;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 public class Explanation {
     /*
@@ -28,7 +25,17 @@ public class Explanation {
     // there can be more than one catch blocks but there can be only one finally block
 
     // the entire exception information is stored in a stack, so exception handling is an expensive operation, you should use it carefully
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException{
+        try {
+            exceptionHandling();
+        } catch(FileNotFoundException e) {
+            System.out.println(e);
+            throw e;
+        }
+    }
+
+    private static void exceptionHandling() throws FileNotFoundException{
+
         //with try block you need either catch block(s) and/or finally block
         // there can be multiple catch blocks but only one finally block
         InputStream is = null;
@@ -38,19 +45,26 @@ public class Explanation {
             //is.close();
             //e is the name of the object of a particular exception, you can give any name to it, it contains the information about the exception
         } catch (FileNotFoundException e) {//this catch block will be executed if file is not found
-            System.out.println("file not found. sorry."+e.getMessage());
+            System.out.println("file not found. sorry." + e.getMessage());
+            throw e;
+        } catch (IOException e) {
+            System.out.println("IOException occurred." + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Some other exception occurred." + e.getMessage());
         } finally {// the finally block is always executed whether there is an exception or not an exception
             //the code related to releasing the resources should be written in the finally block
-            if(is != null) {
+            if (is != null) {
                 try {
                     is.close();// this will close an opened stream (connection) with the file
-                }catch(IOException e) {// if connection is not closed for some reason it will throw IOException and this catch block will catch that exception
+                } catch (
+                        IOException e) {// if connection is not closed for some reason it will throw IOException and this catch block will catch that exception
 
-                        System.out.println("exception while closing the stream."+e.getMessage());
+                    System.out.println("exception while closing the stream." + e.getMessage());
                 }
             }
         }
         System.out.println("end of program");
+
     }
 
 }
