@@ -45,7 +45,7 @@ public class MyArrayList {
         list2.add(11);
         list2.add(12);
         System.out.println(list2);
-        int element = list2.get(7);
+        int element = list2.get(1000);
         System.out.println(element);
         list2.put(7, 52149);
         System.out.println(list2);
@@ -54,7 +54,7 @@ public class MyArrayList {
     public int get(int index) {
         if(!isValidIndex(index)) {
             System.out.println("Index "+index+" is not valid");
-            return -1;// todo: throw an exception
+                //todo : throw an exception
         }
 
         return a[index];
