@@ -53,8 +53,13 @@ public class MyArrayList {
 
     public int get(int index) {
         if(!isValidIndex(index)) {
-            System.out.println("Index "+index+" is not valid");
-                //todo : throw an exception
+
+            try {
+                throw new RuntimeException();
+            } catch (RuntimeException e) {
+                System.out.println("Index "+index+" is not valid");
+
+            }
         }
 
         return a[index];
@@ -63,8 +68,12 @@ public class MyArrayList {
 
     public int put(int index, int element) {
         if(!isValidIndex(index)) {
-            System.out.println("Index "+index+" is not valid");
-            return -1; // todo: throw an exception
+            try {
+                throw new RuntimeException();
+            } catch (RuntimeException e) {
+                System.out.println("Index "+index+" is not valid");
+
+            }
         }
 
         int temp = a[index];
@@ -103,8 +112,12 @@ public class MyArrayList {
 
     public int remove(int index) {
         if(!isValidIndex(index)) {
-            System.out.println("Index "+index+" is not valid");
-            return -1; // todo: throw an exception
+            try {
+                throw new RuntimeException();
+            } catch (RuntimeException e) {
+                System.out.println("Index "+index+" is not valid");
+
+            }
         }
 
         int temp = a[index];
