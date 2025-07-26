@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.Objects;
 
+
 public class MyArrayList {
     private int[] a;
     private int next = 0;
@@ -45,33 +46,41 @@ public class MyArrayList {
         list2.add(11);
         list2.add(12);
         System.out.println(list2);
-        int element = list2.get(1000);
+        int element =0;
+        int index2= 1000;
+        try {
+            element =list2.get(index2);
+        } catch (MyInvalidIndexException e) {
+            System.out.println("Index "+index2+" is not valid. " + e);
+            //throw e;
+        }
         System.out.println(element);
-        list2.put(7, 52149);
+        int index= 7;
+        try {
+            list2.put(7, 52149);
+        } catch (MyInvalidIndexException e) {
+//            System.out.println("Index "+index+" is not valid");
+        }
         System.out.println(list2);
     }
 
-    public int get(int index) {
+    public int get(int index) throws MyInvalidIndexException {
         if(!isValidIndex(index)) {
-
-            try {
-                throw new RuntimeException();
-            } catch (RuntimeException e) {
-                System.out.println("Index "+index+" is not valid");
-
-            }
+            throw new MyInvalidIndexException("Passed Index number is not valid. Please check.");
         }
 
         return a[index];
 
     }
 
-    public int put(int index, int element) {
+
+    public int put(int index, int element) throws MyInvalidIndexException {
         if(!isValidIndex(index)) {
             try {
-                throw new RuntimeException();
-            } catch (RuntimeException e) {
-                System.out.println("Index "+index+" is not valid");
+                throw new MyInvalidIndexException("Invalid Index Exception");
+            } catch (MyInvalidIndexException e) {
+
+                throw e;
 
             }
         }
@@ -113,8 +122,8 @@ public class MyArrayList {
     public int remove(int index) {
         if(!isValidIndex(index)) {
             try {
-                throw new RuntimeException();
-            } catch (RuntimeException e) {
+                throw new MyInvalidIndexException("Index "+index+" is not valid");
+            } catch (MyInvalidIndexException e) {
                 System.out.println("Index "+index+" is not valid");
 
             }

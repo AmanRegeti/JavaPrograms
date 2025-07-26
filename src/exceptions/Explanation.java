@@ -14,7 +14,7 @@ public class Explanation {
     |           |
                 RuntimeException
                             |
-    IO,SQL exception     AIOB,NPE,CCE exception
+    IO,SQL exception     AIOB,NPE exception
       */
     //Object class is the parent class of all the classes in Java
     //throwable class is the parent of all the class in exception handling framework
@@ -31,10 +31,12 @@ public class Explanation {
         } catch(FileNotFoundException e) {
             System.out.println(e);
             throw e;
+        } catch(MyException e) {
+            System.out.println(e);
         }
     }
 
-    private static void exceptionHandling() throws FileNotFoundException{
+    private static void exceptionHandling() throws FileNotFoundException, MyException{
 
         //with try block you need either catch block(s) and/or finally block
         // there can be multiple catch blocks but only one finally block
@@ -49,6 +51,7 @@ public class Explanation {
             throw e;
         } catch (IOException e) {
             System.out.println("IOException occurred." + e.getMessage());
+            throw new MyException(e);
         } catch (Exception e) {
             System.out.println("Some other exception occurred." + e.getMessage());
         } finally {// the finally block is always executed whether there is an exception or not an exception
