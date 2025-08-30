@@ -4,8 +4,8 @@ public class SortedArraysInSortedArray {
     public static void main(String[] args) {
         //3,4,6,7,8,10,12,14,15,17,19,20
         int[] a = {3, 7, 8, 10, 14, 20, 25, 45, 54, 76, 90};
-        int[] b = {4, 6, 12, 15, 17, 19};
-        int[] c = {1, 2, 5, 9, 11, 13, 16, 18};
+        int[] b = {4, 6, 11, 12, 17, 19};
+        int[] c = {1, 2, 5, 9, 13, 15, 16, 18};
         int[] FinalArray = sortArray2(a, b, c);
         System.out.println(Arrays.toString(FinalArray));
 
@@ -129,19 +129,42 @@ public class SortedArraysInSortedArray {
 //                j++;
 //            }
 //        }
-        count= mergeTwoArrays( MergedArray, a,count,i,  b,j);
-        count=mergeTwoArrays( MergedArray, b,count,j,  c,k);
-        count=mergeTwoArrays( MergedArray, c,count,k,  a,i);
-        count=mergeRemainingArray(MergedArray, a, count, i);
-        count =mergeRemainingArray(MergedArray, b, count, j);
-        count=mergeRemainingArray(MergedArray, c, count, k);
+        int[] values;
+        values = mergeTwoArrays2(MergedArray, a, count, i, b, j);
+        count = values[0];
+        i = values[1];
+        j = values[2];
+       values = mergeTwoArrays2(MergedArray, c, count, k, b, j);
+        count = values[0];
+        k = values[1];
+        j = values[2];
+        values= mergeTwoArrays2(MergedArray, a, count, i, c, k);
+        count = values[0];
+        i = values[1];
+        k = values[2];
+       //---------------------------
+//        IndexValues values = mergeTwoArrays(MergedArray, a, count, i, b, j);
+//        count = values.count;
+//        i = values.index;
+//        j = values.index2;
+//        IndexValues values2 = mergeTwoArrays(MergedArray, b, count, j, c, k);
+//        count = values2.count;
+//        j = values2.index;
+//        k = values2.index2;
+//        IndexValues values3 = mergeTwoArrays(MergedArray, c, count, k, a, i);
+//        count = values3.count;
+//        k = values3.index;
+//        i = values3.index2;
+        count = mergeRemainingArray(MergedArray, a, count, i);
+        count = mergeRemainingArray(MergedArray, b, count, j);
+        count = mergeRemainingArray(MergedArray, c, count, k);
 
 
         return MergedArray;
     }
 
     private static int mergeRemainingArray(int[] mergedArray, int[] array, int count, int index) {
-        while (index < array.length&& count<mergedArray.length) {
+        while (index < array.length && count < mergedArray.length) {
             mergedArray[count] = array[index];
             count++;
             index++;
@@ -149,7 +172,8 @@ public class SortedArraysInSortedArray {
         return count;
     }
 
-    private static int mergeTwoArrays(int[] mergedArray, int[] array, int count, int index, int[] array2, int index2) {
+    private static IndexValues mergeTwoArrays(int[] mergedArray, int[] array, int count, int index, int[] array2, int index2) {
+
         while (index < array.length && index2 < array2.length) {
             if (array[index] < array2[index2]) {
                 mergedArray[count] = array[index];
@@ -161,7 +185,26 @@ public class SortedArraysInSortedArray {
                 index2++;
             }
         }
-        return count;
+        IndexValues values = new IndexValues();
+        values.count = count;
+        values.index = index;
+        values.index2 = index2;
+        return values;
+    }  private static int[] mergeTwoArrays2(int[] mergedArray, int[] array, int count, int index, int[] array2, int index2) {
+
+        while (index < array.length && index2 < array2.length) {
+            if (array[index] < array2[index2]) {
+                mergedArray[count] = array[index];
+                count++;
+                index++;
+            } else {
+                mergedArray[count] = array2[index2];
+                count++;
+                index2++;
+            }
+        }
+        int[] values ={count,index,index2};
+        return values;
     }
 }
 
