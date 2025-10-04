@@ -1,54 +1,99 @@
-import java.util.Arrays;
-
 public class Find6 {
-    public static void main(String[] args) {
-        int[] a = { 7, 2,6, 3,};
-        int sum = 0;
-//        try {
-//            Finding6(a);
+    public static void main(String[] args) throws No6Exception {
+        int[] a = {1,2,3,4,5,6};
+        //try {
+            final int index = finding6(a);
+            takeSum(a, index);
+            //           int sum= sum(a,index);
+//            System.out.println(sum);
 //        } catch (No6Exception e) {
-//            System.out.println("There was no 6 in this Array");
-//            return;
-//        } catch (StartingOrEnding6 f) {
-//
+//            System.out.println(e);
 //        }
 
-            int[] answer =Finding6(a);
-
-        System.out.println(Arrays.toString(answer));
 
     }
 
 
-    private static int[] Finding6(int[] a){
+    private static int finding6(int[] a) throws No6Exception {
         for (int i = 0; i < a.length; i++) {
-        if(a[i]==6){
-            if (i==a.length-1||i==0){
-                int[] remaining = new int[a.length-1];
-                for (int j = 0,k=0; j < a.length; j++ ) {
-                    if (a[j]!=6){
-                        remaining[k] = a[j];
-                        k++;
-                    }
+            if (a[i] == 6) {
+                return i;
             }
-                return remaining;
-            }
-            else {
-                int sum =equals(a,i);
-                int[] answer={sum};
-                return answer;
-            }
-
-            }
-
         }
-        return a;
+
+        throw new No6Exception("There is no 6 in this exception");
+
     }
 
-    private static int equals(int[] a, int i) {
+    private static void takeSum(int[] a, int i) {
+        int indexOf6 = i;
+        int indexOfAfter6 = i + 1;
+        int indexOfStart = 0;
+        while (indexOfStart < indexOf6 && indexOfAfter6 < a.length) {
+            int sum = a[indexOfStart] + a[indexOfAfter6];
+            indexOfStart++;
+            indexOfAfter6++;
+            System.out.println(sum);
+        }
+        printRemaining(a, indexOfAfter6, indexOfStart, i);
+
+    }
+
+    private static void printRemaining(int[] a, int indexOfAfter6, int indexOfStart, int i) {
+
+
+
+
+        printLeft(indexOfStart,i,a);
+        printRight(indexOfAfter6,a);
+
+
+    }
+    private static void printLeft(int indexOfStart, int i,int[] a) {
+        for (int j = indexOfStart ; j < i; j++) {
+            System.out.println(a[j]);
+        }
+    }
+
+    private static void printRight(int indexOfAfter6,int[] a) {
+        for (int j = indexOfAfter6; j < a.length; j++) {
+            System.out.println(a[j]);
+        }
+    }
+
+
+
+
+//    (private static int[] Finding6(int[] a) throws Yes6Exception {
+//        for (int i = 0; i < a.length; i++) {
+//            if (a[i] == 6) {
+//                if (i == a.length - 1 || i == 0) {
+//                    int[] remaining = new int[a.length - 1];
+//                    for (int j = 0, k = 0; j < a.length; j++) {
+//                        if (a[j] != 6) {
+//                            remaining[k] = a[j];
+//                            k++;
+//                        }
+//                    }
+//                    return remaining;
+//                } else {
+//                    try {
+//                        throw new Yes6Exception("There is a 6 in this Code");
+//                    } catch (Yes6Exception e) {
+//                        throw e;
+//                    }
+//                }
+//
+//            }
+//
+//        }
+//        return a;
+//    }
+
+   /* private static int sum(int[] a, int i) {
         int sum = 0;
         sum = a[i + 1] + a[0];
         return sum;
-    }
+    }*/
 }
 

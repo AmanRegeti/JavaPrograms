@@ -13,9 +13,9 @@ public class MyArrayList {
         this.a = new int[8];
     }
 
-    //constructors are a special type of function without a return type
-    //new operators create new objects
-    //this, is a current object
+    // constructors are a special type of function without a return type
+    // new operators create new objects
+    // this, is a current object
     // e.g. MyArrayList list = new MyArrayList(10)
     // here, list is a current object
     public MyArrayList(int size) {
