@@ -1,27 +1,32 @@
+import java.util.Scanner;
+
 public class Find6 {
     public static void main(String[] args) throws No6Exception {
         int[] a = {1,2,3,4,5,6};
+        System.out.println("What number should I find");
         //try {
-            final int index = finding6(a);
+         Scanner scanner= new Scanner(System.in);
+         int number = scanner.nextInt();
+            final int index = finding6(a,number);
             takeSum(a, index);
-            //           int sum= sum(a,index);
-//            System.out.println(sum);
-//        } catch (No6Exception e) {
-//            System.out.println(e);
-//        }
+// int sum= sum(a,index);
+// System.out.println(sum);
+// } catch (No6Exception e) {
+// System.out.println(e);
+// }
 
 
     }
 
 
-    private static int finding6(int[] a) throws No6Exception {
+    private static int finding6(int[] a, int number) throws No6Exception {
         for (int i = 0; i < a.length; i++) {
-            if (a[i] == 6) {
+            if (a[i] == number) {
                 return i;
             }
         }
 
-        throw new No6Exception("There is no 6 in this exception");
+        throw new No6Exception("There is no "+number+" in this exception");
 
     }
 
