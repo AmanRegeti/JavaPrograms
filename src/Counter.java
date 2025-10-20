@@ -1,14 +1,14 @@
 public class Counter {
     private int c = 0;
 //todo:Hashing
-    public synchronized void inc() {
+//set : unique elements, insertion order !=  retrieval order
+    public void inc() {
         c++;
     }
 
-    public synchronized int get() {
+    public int get() {
         return c;
     }
-
     public static void main(String[] args) {
         Counter cnt = new Counter(); // Shared resource
 

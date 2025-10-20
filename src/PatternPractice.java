@@ -1,6 +1,8 @@
 public class PatternPractice {
     public static void main(String[] args) {
         int n = 6;
+        pattern8();
+        System.out.println("-----------------------------------");
         StarRows(n);
         System.out.println("-----------------------------------");
         StarTriangle(n);
@@ -94,6 +96,25 @@ public class PatternPractice {
             }
             System.out.println();
 
+            }
+        }
+        public static void pattern8() {
+            int k;
+            int n =4;
+            for(int i= n; i>0;i--){
+                for( k=0;k<n-i;k++){
+                    System.out.print(" ");
+                }
+                for(int j=1; j< n-k;j++){
+                    System.out.print("*");
+                }
+                for(int j=0; j< n-k;j++){
+                    System.out.print("*");
+                }
+                for( k=0;k<n-i;k++){
+                    System.out.print(" ");
+                }
+                System.out.println("");
             }
         }
 
