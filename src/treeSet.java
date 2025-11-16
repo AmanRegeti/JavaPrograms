@@ -12,7 +12,8 @@ public class treeSet {
         b.add(5);
         b.add(6);
         b.add(7);
-        Set a = new TreeSet<>(b);
+//converting the hashset to treeset
+        Set a = new TreeSet(b);
         System.out.println(a);
         TreeSet c = new TreeSet<>();
         c.add(1);
