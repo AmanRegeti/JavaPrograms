@@ -3,18 +3,20 @@ import java.util.Objects;
 
 
 public class MyArrayList {
-    private int[] a;
+    public int[] a;
     private int next = 0;
 
     // default constructor  - empty constructor without any parameters
     // If you don't have any other constructor(s), default one is implicitly added.
-    // You can override a default constructor as done below.
+    // You can overload a default constructor as done below.
     public MyArrayList() {
-        this.a = new int[8];
+        //this.a = new int[8];
+        this(8);
     }
-
+    //
     // constructors are a special type of function without a return type
-    // new operators create new objects
+    // "new" operator creates new objects of the class. At that time, constructor will be called.
+    // one class can have multiple overloaded constructors
     // this, is a current object
     // e.g. MyArrayList list = new MyArrayList(10)
     // here, list is a current object
