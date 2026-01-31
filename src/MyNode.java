@@ -9,9 +9,8 @@ public class MyNode<E> {
         next = n;
     }
 
-
-    private void indexof(MyNode<E> next) {
-
+    public E getValue() {
+        return value;
     }
 
     public void setNext(MyNode<E> n) {
@@ -35,9 +34,6 @@ public class MyNode<E> {
 
     @Override
     public String toString() {
-        return "Node{" +
-                "value=" + value +
-                ", next=" + next +
-                '}';
+        return value + " , " + next;
     }
 }
