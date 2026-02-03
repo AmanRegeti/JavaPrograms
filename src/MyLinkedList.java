@@ -20,14 +20,22 @@ public class MyLinkedList<E> {
         System.out.println(list);
         list.add(3, 20);
         System.out.println(list);
+        System.out.println("---------------------------------------------------------------------------");
+        System.out.println(list);
         Integer RemovedLastValue = list.removeLast();
         System.out.println(RemovedLastValue);
         Integer RemovedLastValue2 = list.removeLast();
-        System.out.println(RemovedLastValue);
+        System.out.println(RemovedLastValue2);
         Integer RemovedLastValue3 = list.removeLast();
-        System.out.println(RemovedLastValue);
+        System.out.println(RemovedLastValue3);
+        Integer RemovedLastValue4 = list.removeLast();
+        System.out.println(RemovedLastValue4);
+        Integer RemovedLastValue5 = list.removeLast();
+        System.out.println(RemovedLastValue5);
+        Integer RemovedLastValue6 = list.removeLast();
+        System.out.println(RemovedLastValue6);
         System.out.println(list);
-
+        System.out.println("--------------------------------------------------");
         MyLinkedList<Integer> list2 = new MyLinkedList<>();
         list2.addLast(15);
         list2.addLast(14);
@@ -35,6 +43,7 @@ public class MyLinkedList<E> {
         list2.addLast(12);
         list2.addLast(11);
         System.out.println(list2);
+        System.out.println("----------------------------------------");
 
         Integer removedValue = list2.removeFirst();
         System.out.println(removedValue);
@@ -42,11 +51,23 @@ public class MyLinkedList<E> {
         Integer removedValue2 = list2.removeFirst();
         System.out.println(removedValue2);
         System.out.println(list2);
+        MyLinkedList<Integer> list3 = new MyLinkedList<>();
+        list3.add(0,15);
+        list3.add(0,14);
+        list3.add(0, 13);
+        list3.add(0, 12);
+        list3.add(0, 11);
+        System.out.println(list3.head);
+        System.out.println("-----------------Remove---------------");
+        list3.remove(1);
+        list3.remove(1);
+        list3.remove(1);
+        System.out.println(list3);
     }
 
     public E removeFirst() {
         if (head == null) {
-            System.out.println("There is no Linked List or elements in the linked list to remove from");
+            System.out.println("There are no elements in the linked list to remove from");
             return null;
         }
         MyNode<E> prevHead = head;
@@ -56,23 +77,47 @@ public class MyLinkedList<E> {
 
     }
     public E removeLast(){
-        if (head == null) {
-            System.out.println("There is no Linked List or elements in the linked list to remove from");
+        if (head == null ) {
+            System.out.println("There are no elements in the linked list to remove from");
             return null;
         }
-        MyNode<E> pointer = head.getNext();
-        MyNode<E> prev = head;
 
+        if (head.getNext() == null){
+            E temp = head.getValue();
+            head=null;
+            return temp;
+        }
+        MyNode<E> prev= null;
+        MyNode<E> pointer = head;
         while(pointer.getNext() != null){
+            prev = pointer;
             pointer= pointer.getNext();
-            prev=prev.getNext();
         }
         E temp = pointer.getValue();
         prev.setNext(null);
         return temp;
     }
-    public void remove(int index) {
 
+    public E remove(int index) {
+        if (head == null) {
+            System.out.println("There are no elements in the linked list to remove from");
+            return null;
+        }
+        if (head.getNext() == null || index<2){
+            E temp = head.getValue();
+            head=null;
+            return temp;
+        }
+        int counter = 0;
+        MyNode<E> prev = null;
+        MyNode<E> pointer=head;
+        while (counter<index-1) {
+            prev = pointer;
+            pointer= pointer.getNext();
+        }
+        E temp = pointer.getValue();
+        prev.setNext(null);
+        return temp;
     }
 
     public void addFirst(E element) {
@@ -104,7 +149,6 @@ public class MyLinkedList<E> {
             head = newNode;
             return;
         }
-
         int counter = 0;
         MyNode<E> pointer = head;
         while (counter != index - 1) {
@@ -114,9 +158,29 @@ public class MyLinkedList<E> {
         newNode.setNext(pointer.getNext());
         pointer.setNext(newNode);
     }
+    private MyNode get(int index){
+
+        int counter=0;
+        MyNode prev = head ;
+        while(counter<index){
+            prev= prev.getNext();
+        }
+        return prev.getNext();
+    }
+    private int size(){
+        if (head == null) {
+            return 0;
+        }
+        int size =1;
+        MyNode pointer=head;
+        while (pointer.getNext() != null){
+            size++;
+        }
+        return size;
+    }
     @Override
     public String toString() {
-        return "MyLinkedList{"  + head + "," + "}";
+        return "MyLinkedList{,"  + head  + "}";
 
     }
 }
