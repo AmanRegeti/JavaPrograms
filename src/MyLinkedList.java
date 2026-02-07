@@ -59,9 +59,9 @@ public class MyLinkedList<E> {
         list3.add(0, 11);
         System.out.println(list3.head);
         System.out.println("-----------------Remove---------------");
-        list3.remove(1);
-        list3.remove(1);
-        list3.remove(1);
+        list3.remove(2);
+       // list3.remove(0);
+       // list3.remove(0);
         System.out.println(list3);
     }
 
@@ -103,7 +103,7 @@ public class MyLinkedList<E> {
             System.out.println("There are no elements in the linked list to remove from");
             return null;
         }
-        if (head.getNext() == null || index<2){
+        if (head.getNext() == null){
             E temp = head.getValue();
             head=null;
             return temp;
@@ -111,12 +111,13 @@ public class MyLinkedList<E> {
         int counter = 0;
         MyNode<E> prev = null;
         MyNode<E> pointer=head;
-        while (counter<index-1) {
+        while (counter<index+1) {
             prev = pointer;
             pointer= pointer.getNext();
+            counter++;
         }
         E temp = pointer.getValue();
-        prev.setNext(null);
+        prev.setNext(pointer.getNext());
         return temp;
     }
 
@@ -145,39 +146,31 @@ public class MyLinkedList<E> {
 
     public void add(int index, E element) {
         MyNode<E> newNode = new MyNode<>(element);
+
         if (head == null) {
             head = newNode;
             return;
         }
         int counter = 0;
+        MyNode<E> prev = null;
         MyNode<E> pointer = head;
-        while (counter != index - 1) {
-            pointer = pointer.getNext();
+        while (counter != index+1) {
+            prev = pointer;
+            pointer= pointer.getNext();
             counter++;
         }
-        newNode.setNext(pointer.getNext());
-        pointer.setNext(newNode);
+        prev.setNext(newNode);
+        newNode.setNext(pointer);
     }
-    private MyNode get(int index){
-
-        int counter=0;
-        MyNode prev = head ;
-        while(counter<index){
-            prev= prev.getNext();
-        }
-        return prev.getNext();
-    }
-    private int size(){
-        if (head == null) {
-            return 0;
-        }
-        int size =1;
-        MyNode pointer=head;
-        while (pointer.getNext() != null){
-            size++;
-        }
-        return size;
-    }
+//    private MyNode get(int index){
+//
+//        int counter=0;
+//        MyNode prev = head ;
+//        while(counter<index){
+//            prev= prev.getNext();
+//        }
+//        return prev.getNext();
+//    }
     @Override
     public String toString() {
         return "MyLinkedList{,"  + head  + "}";
