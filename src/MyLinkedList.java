@@ -12,7 +12,6 @@ public class MyLinkedList<E> {
     public static void main(String[] args) {
         MyLinkedList<Integer> list = new MyLinkedList<>();
         list.addFirst(15);
-
         list.addFirst(14);
         list.addFirst(13);
         list.addFirst(12);
@@ -44,7 +43,6 @@ public class MyLinkedList<E> {
         list2.addLast(11);
         System.out.println(list2);
         System.out.println("----------------------------------------");
-
         Integer removedValue = list2.removeFirst();
         System.out.println(removedValue);
         System.out.println(list2);
@@ -52,18 +50,61 @@ public class MyLinkedList<E> {
         System.out.println(removedValue2);
         System.out.println(list2);
         MyLinkedList<Integer> list3 = new MyLinkedList<>();
-        list3.add(0,15);
-        list3.add(0,14);
+        list3.add(0, 15);
+        list3.add(0, 14);
         list3.add(0, 13);
         list3.add(0, 12);
         list3.add(0, 11);
-        System.out.println(list3.head);
-        System.out.println("-----------------Remove---------------");
-        list3.remove(2);
-       // list3.remove(0);
-       // list3.remove(0);
+//        System.out.println(list3.head);
+//        System.out.println("-----------------Remove---------------");
+//        list3.remove(2);
+//       // list3.remove(0);
+//       // list3.remove(0);
         System.out.println(list3);
+        System.out.println("----------------Get-------------------");
+        System.out.println(list3.get(2));
+        System.out.println(list3.get(4));
+        System.out.println(list3.get(9));
+        System.out.println(list3.size());
+
+        Person p1 = new Person();
+        p1.name = "John";
+        p1.age = 12.5f;
+        p1.height = 5.7f;
+        p1.weight = 70.5f;
+        Person p2 = new Person();
+        p2.name = "Bob";
+        p2.age = 13.6f;
+        p2.height = 6;
+        p2.weight = 79.3f;
+        Person p3 = new Person();
+        p3.name = "Jeff";
+        p3.age = 11;
+        p3.height = 5.8f;
+        p3.weight = 69f;
+        Person p4 = new Person();
+        p4.name = "Steve";
+        p4.age = 13;
+        p4.height = 6f;
+        p4.weight = 73f;
+        Person p5 = new Person();
+        p5.name = "";
+        p5.age = 5;
+        p5.height = 3f;
+        p5.weight = 50f;
+        Person p6 = new Person();
+        p6.name = "Jeff";
+        p6.age = 11;
+        p6.height = 5.8f;
+        p6.weight = 69f;
+        MyLinkedList<Person> list4 = new MyLinkedList<>();
+        list4.addFirst(p1);
+        list4.addFirst(p2);
+        list4.addFirst(p3);
+
+        System.out.println(list4);
     }
+
 
     public E removeFirst() {
         if (head == null) {
@@ -162,15 +203,33 @@ public class MyLinkedList<E> {
         prev.setNext(newNode);
         newNode.setNext(pointer);
     }
-//    private MyNode get(int index){
-//
-//        int counter=0;
-//        MyNode prev = head ;
-//        while(counter<index){
-//            prev= prev.getNext();
-//        }
-//        return prev.getNext();
-//    }
+    private E get(int index){
+        if (head == null) {
+            System.out.println("There is nothing in the list");
+            return null;
+        }
+        int counter=0;
+        MyNode<E> pointer = head;
+        while(counter<index){
+            counter++;
+            pointer= pointer.getNext();
+            if( pointer ==null){
+                System.out.println("Your index is out of bounds");
+                return null;
+            }
+        }
+        return pointer.getValue();
+
+    }
+    private int size(){
+        int size=1;
+        MyNode element= head;
+        while (element.getNext()!=null){
+            size++;
+            element= element.getNext();
+        }
+        return size;
+    }
     @Override
     public String toString() {
         return "MyLinkedList{,"  + head  + "}";
