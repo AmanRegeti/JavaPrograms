@@ -88,20 +88,26 @@ public class MyLinkedList<E> {
         p4.height = 6f;
         p4.weight = 73f;
         Person p5 = new Person();
-        p5.name = "";
-        p5.age = 5;
-        p5.height = 3f;
-        p5.weight = 50f;
+        p5.name = "Chris";
+        p5.age = 9;
+        p5.height = 4f;
+        p5.weight = 100f;
         Person p6 = new Person();
-        p6.name = "Jeff";
-        p6.age = 11;
-        p6.height = 5.8f;
-        p6.weight = 69f;
+        p6.name = "Greg";
+        p6.age = 5;
+        p6.height = 4;
+        p6.weight = 50;
         MyLinkedList<Person> list4 = new MyLinkedList<>();
         list4.addFirst(p1);
         list4.addFirst(p2);
         list4.addFirst(p3);
-
+        list4.addFirst(p4);
+        list4.addFirst(p5);
+        list4.addFirst(p6);
+        System.out.println(list4);
+        list4.remove(3);
+        list4.removeFirst();
+        list4.removeLast();
         System.out.println(list4);
     }
 
