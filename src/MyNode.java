@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class MyNode<E> {
     private E value;
     private MyNode<E> next;
@@ -19,21 +21,26 @@ public class MyNode<E> {
     public MyNode<E> getNext(){
         return next;
     }
-   /* @Override
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Node<?> node = (Node<?>) o;
-        return Objects.equals(value, node.value) && Objects.equals(next, node.next);
+        MyNode<?> myNode = (MyNode<?>) o;
+        return Objects.equals(value, myNode.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(value, next);
-    }*/
+        return Objects.hashCode(value);
+    }
 
     @Override
     public String toString() {
         return value + " , " + next;
+    }
+
+    public void setNext(int node1) {
+
     }
 }

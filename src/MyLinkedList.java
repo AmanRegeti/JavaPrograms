@@ -105,10 +105,13 @@ public class MyLinkedList<E> {
         list4.addFirst(p5);
         list4.addFirst(p6);
         System.out.println(list4);
+        System.out.println(list4.get(3));
+
         list4.remove(3);
         list4.removeFirst();
         list4.removeLast();
         System.out.println(list4);
+
     }
 
 
@@ -177,7 +180,6 @@ public class MyLinkedList<E> {
         newNode.setNext(head);
         head = newNode;
     }
-
     public void addLast(E element) {
         MyNode<E> newNode = new MyNode<>(element);
         if (head == null) {
@@ -190,7 +192,6 @@ public class MyLinkedList<E> {
         }
         pointer.setNext(newNode);
     }
-
     public void add(int index, E element) {
         MyNode<E> newNode = new MyNode<>(element);
 
@@ -209,7 +210,7 @@ public class MyLinkedList<E> {
         prev.setNext(newNode);
         newNode.setNext(pointer);
     }
-    private E get(int index){
+    public E get(int index){
         if (head == null) {
             System.out.println("There is nothing in the list");
             return null;
@@ -227,7 +228,7 @@ public class MyLinkedList<E> {
         return pointer.getValue();
 
     }
-    private int size(){
+    public int size(){
         int size=1;
         MyNode element= head;
         while (element.getNext()!=null){
