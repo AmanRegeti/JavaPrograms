@@ -194,7 +194,6 @@ public class MyLinkedList<E> {
     }
     public void add(int index, E element) {
         MyNode<E> newNode = new MyNode<>(element);
-
         if (head == null) {
             head = newNode;
             return;
@@ -206,9 +205,11 @@ public class MyLinkedList<E> {
             prev = pointer;
             pointer= pointer.getNext();
             counter++;
+
         }
         prev.setNext(newNode);
         newNode.setNext(pointer);
+
     }
     public E get(int index){
         if (head == null) {
@@ -229,8 +230,11 @@ public class MyLinkedList<E> {
 
     }
     public int size(){
-        int size=1;
-        MyNode element= head;
+        int size=0;
+        if (head==null) {
+            return size;
+        }
+        MyNode element = head;
         while (element.getNext()!=null){
             size++;
             element= element.getNext();
