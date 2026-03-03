@@ -235,6 +235,7 @@ public class MyLinkedList<E> {
             return size;
         }
         MyNode element = head;
+        size++;
         while (element.getNext()!=null){
             size++;
             element= element.getNext();

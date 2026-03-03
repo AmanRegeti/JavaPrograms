@@ -22,22 +22,34 @@ public class MergeTwoSortedLinkedList {
             int e1 = l1.get(i);
             int e2 = l2.get(j);
             if (e1 < e2) {
-                newMerge.add(k, e1);
+                newMerge.addLast(e1);
                 i++;
                 k++;
-            } else if (e1 > e2) {
-                newMerge.add(k, e2);
+            } else if (e1 > e2)
+            {
+                newMerge.addLast(e2);
                 j++;
                 k++;
             } else {
-                newMerge.add(k, e1);
+                newMerge.addLast(e1);
                 i++;
                 k++;
-                newMerge.add(k, e2);
+                newMerge.addLast(e2);
                 j++;
                 k++;
             }
         }
+        addRemaining(l1,newMerge,k,i);
+        addRemaining(l2,newMerge,k,j);
         System.out.println(newMerge);
     }
+    private static MyLinkedList<Integer> addRemaining(MyLinkedList<Integer> list, MyLinkedList<Integer> newMerge, int k, int l){
+        for (int i = l; i < list.size(); i++) {
+            int e1 =  list.get(i);
+            newMerge.addLast(e1);
+        }
+        return newMerge;
+    }
+
+
 }
