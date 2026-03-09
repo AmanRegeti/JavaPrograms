@@ -1,5 +1,5 @@
 public class MyLinkedList<E> {
-    private MyNode<E> head = null;
+    public MyNode<E> head = null;
 
     //todo: package
     //Overloading: 2 or more methods have the same name provided they have some difference in parameters
@@ -227,6 +227,24 @@ public class MyLinkedList<E> {
             }
         }
         return pointer.getValue();
+
+    }
+    public MyNode<E> getNode(int index){
+        if (head == null) {
+            System.out.println("There is nothing in the list");
+            return null;
+        }
+        int counter=0;
+        MyNode<E> pointer = head;
+        while(counter<index){
+            counter++;
+            pointer= pointer.getNext();
+            if( pointer ==null){
+                System.out.println("Your index is out of bounds");
+                return null;
+            }
+        }
+        return pointer;
 
     }
     public int size(){
