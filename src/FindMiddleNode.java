@@ -1,13 +1,15 @@
 public class FindMiddleNode{
     public static void main(String[] args) {
-        MyLinkedList list= new MyLinkedList<>();
+        MyLinkedList<Integer> list= new MyLinkedList<>();
         list.addFirst(5);
         list.addFirst(6);
-        list.addFirst(2);
         list.addFirst(3);
+        list.addFirst(2);
         list.addFirst(4);
-        list.addFirst(6);
+        list.addFirst(4);
+
 //        FindMiddle(list);
+        TwoPointerMethod(list);
 
     }
 //    private static void FindMiddle(MyLinkedList list){
@@ -73,14 +75,20 @@ public class FindMiddleNode{
 //        return i;
 //    }
 
-    private static void TwoPointerMethod(MyLinkedList list) {
-        MyNode p1= list.head;
-        MyNode p2= list.head;
-        while(p2.getNext() != null && p2.getNext() != null){
+    private static void TwoPointerMethod(MyLinkedList<Integer> list) {
+        MyNode<Integer> p1= list.head;
+        MyNode<Integer> p2= list.head;
+        while(p2 != null){
             p1=p1.getNext();
             p2=p2.getNext();
-            if (p2 == null) {
-
+            if (p2.getNext() == null) {
+                System.out.println(p1.getValue());
+                return;
+            }
+            p2=p2.getNext();
+            if (p2.getNext() == null) {
+                System.out.println(p1.getValue());
+                return;
             }
         }
     }
