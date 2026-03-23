@@ -1,9 +1,9 @@
 public class TicketSystem implements Runnable {
         public static Thread ticketSytesmThread;
         public static TicketSystem ticketSystem;
-
+//synchronizing : having any method go in order from what reaches the thread first to last
         @Override
-        public void run() {
+            public  void run() {
             TicketBooking booking = new TicketBooking();
             Thread bookingThread = new Thread(booking);
 
