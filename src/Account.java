@@ -7,20 +7,24 @@ public class Account {
         float moneyInAcc = acc.get();
         System.out.println(moneyInAcc);
     }
-    p
-    synchronized public void withdraw(float MoneyWithdraw) {
-        Float MoneyLeft= money - MoneyWithdraw;
-        System.out.println("You just withdrew" + MoneyWithdraw);
-        System.out.println("You have " + MoneyLeft + " dollars left in your account");
-        money = MoneyLeft;
+    public  void runwithdraw() {
+        withdraw = new AccountActivity();
+        Thread thread = new Thread();
+        synchronized public void withdraw(float MoneyWithdraw) {
+            Float MoneyLeft= money - MoneyWithdraw;
+            System.out.println("You just withdrew" + MoneyWithdraw);
+            System.out.println("You have " + MoneyLeft + " dollars left in your account");
+            money = MoneyLeft;
+        }
+        synchronized public void deposit(float MoneyDeposited){
+            Float TotalMoney= money + MoneyDeposited;
+            System.out.println("You just deposited" + MoneyDeposited);
+            System.out.println("You have " + TotalMoney + " dollars in your account");
+            money = TotalMoney;
+        }
+        synchronized public float get() {
+            return money;
+        }
     }
-    synchronized public void deposit(float MoneyDeposited){
-        Float TotalMoney= money + MoneyDeposited;
-        System.out.println("You just deposited" + MoneyDeposited);
-        System.out.println("You have " + TotalMoney + " dollars in your account");
-        money = TotalMoney;
-    }
-    synchronized public float get() {
-        return money;
-    }
+
 }
