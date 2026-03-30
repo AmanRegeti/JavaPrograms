@@ -1,30 +1,25 @@
 public class Account {
-    private float  money=300;
-    public static void main(String[] args) {
-        Account acc = new Account();
-        acc.withdraw(100f);
-        acc.deposit(50f);
-        float moneyInAcc = acc.get();
-        System.out.println(moneyInAcc);
+    private float  money;
+    public Account(float money) {
+        this.money = money;
     }
-    public  void runwithdraw() {
-        withdraw = new AccountActivity();
-        Thread thread = new Thread();
-        synchronized public void withdraw(float MoneyWithdraw) {
-            Float MoneyLeft= money - MoneyWithdraw;
+
+    synchronized public void withdraw(float MoneyWithdraw) throws InterruptedException {
+            float MoneyLeft= money - MoneyWithdraw;
             System.out.println("You just withdrew" + MoneyWithdraw);
-            System.out.println("You have " + MoneyLeft + " dollars left in your account");
             money = MoneyLeft;
+            Thread.sleep(1000);
+            System.out.println("You have " + money + " dollars left in your account after withdrawal");
         }
-        synchronized public void deposit(float MoneyDeposited){
-            Float TotalMoney= money + MoneyDeposited;
+    synchronized public void deposit(float MoneyDeposited){
+            float TotalMoney= money + MoneyDeposited;
             System.out.println("You just deposited" + MoneyDeposited);
-            System.out.println("You have " + TotalMoney + " dollars in your account");
             money = TotalMoney;
+            System.out.println("You have " + money + " dollars left in your account after deposit");
         }
-        synchronized public float get() {
+    synchronized public float get() {
             return money;
         }
-    }
+
 
 }
