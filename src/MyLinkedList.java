@@ -126,22 +126,23 @@ public class MyLinkedList<E> {
         return prevHead.getValue();
 
     }
-    public E removeLast(){
-        if (head == null ) {
+
+    public E removeLast() {
+        if (head == null) {
             System.out.println("There are no elements in the linked list to remove from");
             return null;
         }
 
-        if (head.getNext() == null){
+        if (head.getNext() == null) {
             E temp = head.getValue();
-            head=null;
+            head = null;
             return temp;
         }
-        MyNode<E> prev= null;
+        MyNode<E> prev = null;
         MyNode<E> pointer = head;
-        while(pointer.getNext() != null){
+        while (pointer.getNext() != null) {
             prev = pointer;
-            pointer= pointer.getNext();
+            pointer = pointer.getNext();
         }
         E temp = pointer.getValue();
         prev.setNext(null);
@@ -153,17 +154,17 @@ public class MyLinkedList<E> {
             System.out.println("There are no elements in the linked list to remove from");
             return null;
         }
-        if (head.getNext() == null){
+        if (head.getNext() == null) {
             E temp = head.getValue();
-            head=null;
+            head = null;
             return temp;
         }
         int counter = 0;
         MyNode<E> prev = null;
-        MyNode<E> pointer=head;
-        while (counter<index+1) {
+        MyNode<E> pointer = head;
+        while (counter < index + 1) {
             prev = pointer;
-            pointer= pointer.getNext();
+            pointer = pointer.getNext();
             counter++;
         }
         E temp = pointer.getValue();
@@ -180,6 +181,7 @@ public class MyLinkedList<E> {
         newNode.setNext(head);
         head = newNode;
     }
+
     public void addLast(E element) {
         MyNode<E> newNode = new MyNode<>(element);
         if (head == null) {
@@ -192,6 +194,7 @@ public class MyLinkedList<E> {
         }
         pointer.setNext(newNode);
     }
+
     public void add(int index, E element) {
         MyNode<E> newNode = new MyNode<>(element);
         if (head == null) {
@@ -201,9 +204,9 @@ public class MyLinkedList<E> {
         int counter = 0;
         MyNode<E> prev = null;
         MyNode<E> pointer = head;
-        while (counter != index+1) {
+        while (counter != index + 1) {
             prev = pointer;
-            pointer= pointer.getNext();
+            pointer = pointer.getNext();
             counter++;
 
         }
@@ -211,17 +214,18 @@ public class MyLinkedList<E> {
         newNode.setNext(pointer);
 
     }
-    public E get(int index){
+
+    public E get(int index) {
         if (head == null) {
             System.out.println("There is nothing in the list");
             return null;
         }
-        int counter=0;
+        int counter = 0;
         MyNode<E> pointer = head;
-        while(counter<index){
+        while (counter < index) {
             counter++;
-            pointer= pointer.getNext();
-            if( pointer ==null){
+            pointer = pointer.getNext();
+            if (pointer == null) {
                 System.out.println("Your index is out of bounds");
                 return null;
             }
@@ -229,17 +233,18 @@ public class MyLinkedList<E> {
         return pointer.getValue();
 
     }
-    public MyNode<E> getNode(int index){
+
+    public MyNode<E> getNode(int index) {
         if (head == null) {
             System.out.println("There is nothing in the list");
             return null;
         }
-        int counter=0;
+        int counter = 0;
         MyNode<E> pointer = head;
-        while(counter<index){
+        while (counter < index) {
             counter++;
-            pointer= pointer.getNext();
-            if( pointer ==null){
+            pointer = pointer.getNext();
+            if (pointer == null) {
                 System.out.println("Your index is out of bounds");
                 return null;
             }
@@ -247,22 +252,24 @@ public class MyLinkedList<E> {
         return pointer;
 
     }
-    public int size(){
-        int size=0;
-        if (head==null) {
+
+    public int size() {
+        int size = 0;
+        if (head == null) {
             return size;
         }
         MyNode element = head;
         size++;
-        while (element.getNext()!=null){
+        while (element.getNext() != null) {
             size++;
-            element= element.getNext();
+            element = element.getNext();
         }
         return size;
     }
+
     @Override
     public String toString() {
-        return "MyLinkedList{,"  + head  + "}";
+        return "MyLinkedList{," + head + "}";
 
     }
 }

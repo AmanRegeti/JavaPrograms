@@ -3,9 +3,11 @@ import java.util.Objects;
 public class MyNode<E> {
     private E value;
     private MyNode<E> next;
+
     public MyNode(E value) {
         this.value = value;
     }
+
     public MyNode(E value, MyNode<E> n) {
         this(value);
         next = n;
@@ -15,11 +17,16 @@ public class MyNode<E> {
         return value;
     }
 
+    public MyNode<E> getNext() {
+        return next;
+    }
+
     public void setNext(MyNode<E> n) {
         next = n;
     }
-    public MyNode<E> getNext(){
-        return next;
+
+    public void setNext(int node1) {
+
     }
 
     @Override
@@ -38,9 +45,5 @@ public class MyNode<E> {
     @Override
     public String toString() {
         return value + " , " + next;
-    }
-
-    public void setNext(int node1) {
-
     }
 }
