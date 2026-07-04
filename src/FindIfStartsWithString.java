@@ -1,6 +1,6 @@
 public class FindIfStartsWithString {
     public static void main(String[] args) {
-        String subtext = "";
+        String subtext = "mana";
         String txt = "aman";
   //      try {
             boolean sameOrNot = checkIfSame(txt.toCharArray(), subtext.toCharArray());
@@ -171,5 +171,10 @@ private static char[] arrayInsert(int index, char[] text, char[] subtext) throws
             }
         }
         return true;
+
+    }
+    private static boolean checkIfSame2(char[] a, char[] b) {
+
+        return false;
     }
 }
