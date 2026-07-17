@@ -1,11 +1,12 @@
+import java.util.List;
+
 public class Apartment {
+    private int number;
+    // todo: Polymorphism
+    private List<Room> rooms;
 }
 
-class Building extends Apartment {
-}
 
-class Floor extends Building {
-}
 
-class Room extends Floor {
-}
+
+

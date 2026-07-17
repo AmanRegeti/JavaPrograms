@@ -1,6 +1,7 @@
 import java.util.Objects;
 
-public class Person {
+public class
+Person {
    String name;
    float age;
    float height;
