@@ -1,3 +1,5 @@
+package building;
+
 import java.util.List;
 
 public class Apartment {
