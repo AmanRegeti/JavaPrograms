@@ -4,7 +4,10 @@ public enum RoomTypes {
     LIVING_ROOM("Living Room"),
     BED_ROOM("Bed Room"),
     BATH_ROOM("Bath Room"),
-    PATIO("Patio");
+    PATIO("Patio"),
+    OFFICE_ROOM("Office Room"),
+    KITCHEN("Kitchen");
+
 
     private String explanation;
     RoomTypes(String explanation) {
