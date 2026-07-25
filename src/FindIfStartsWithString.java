@@ -1,9 +1,12 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class FindIfStartsWithString {
     public static void main(String[] args) {
-        String subtext = "mana";
-        String txt = "aman";
+        String a = "mana";
+        String b = "mama";
   //      try {
-            boolean sameOrNot = checkIfSame(txt.toCharArray(), subtext.toCharArray());
+            boolean sameOrNot = checkIfSame2(a.toCharArray(), b.toCharArray());
             System.out.println(sameOrNot);
 //        } catch (IndexOutOfBoundsException e) {
 //            System.out.println("Your Index is Out of Bounds");;
@@ -174,7 +177,33 @@ private static char[] arrayInsert(int index, char[] text, char[] subtext) throws
 
     }
     private static boolean checkIfSame2(char[] a, char[] b) {
+        if (a.length != b.length) {
+            return false;
+    }
+        Map<Character, Integer> map = new HashMap<>();
 
-        return false;
+        for (int i = 0; i < a.length; i++) {
+            char ch= a[i];
+            if (map.containsKey(ch)) {
+                int chfreq = map.get(ch);
+                map.put(ch, chfreq + 1);
+            } else{
+                map.put(ch,1);
+            }
+        }
+        for (int i = 0; i < b.length; i++) {
+            char ch= b[i];
+           // System.out.println(ch);
+            int chfreq = map.get(ch);
+            map.put(ch,chfreq-1);
+        }
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            Character key = entry.getKey();
+            Integer value = entry.getValue();
+            if (value> 0){
+                return false;
+            }
+        }
+        return true;
     }
 }
