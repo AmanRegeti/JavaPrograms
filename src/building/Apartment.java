@@ -6,7 +6,7 @@ import java.util.Objects;
 public class Apartment {
     private int number;
     private List<Room> rooms;
-    public Apartment(char number, List<Room> rooms) {
+    public Apartment(int number, List<Room> rooms) {
         this.number = number;
         this.rooms = rooms;
     }
