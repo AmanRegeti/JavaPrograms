@@ -1,2 +1,2 @@
 package building;
-public record ApartmentPerson(String name, int age,float height, float weight) {}
+public record ApartmentPerson(String name, int age,double height, float weight) {}

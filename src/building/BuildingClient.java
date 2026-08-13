@@ -179,8 +179,17 @@ public class BuildingClient {
 
 
         ApartmentPerson aman = new ApartmentPerson("Aman",12,5,100);
+        ApartmentPerson john = new ApartmentPerson("John", 14, 5.5, 115);
+        ApartmentPerson mike = new ApartmentPerson("Mike", 13, 5.2, 102);
+        ApartmentPerson sarah = new ApartmentPerson("Sarah", 16, 5.6, 120);
         Map<ApartmentPerson,List<Building>> map = new HashMap<>();
         map.put(aman,buildings);
+        map.put(john,buildings);
+        map.put(mike,buildings);
+        map.put(sarah,buildings);
+
+    }
+    private static void check(Map<ApartmentPerson,List<Building>> map, Building buildings){
 
     }
 }
