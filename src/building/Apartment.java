@@ -13,7 +13,7 @@ public class Apartment {
     public int getNumber() {
         return this.number;
     }
-    public List<Room> getFloors() {
+    public List<Room> getRooms() {
         return this.rooms;
     }
 

@@ -17,10 +17,10 @@ public class BuildingClient {
         Room room6 = new Room(RoomTypes.KITCHEN, 1, 1);
         rooms.add(room1);
         rooms.add(room2);
-        rooms.add(room3);
-        rooms.add(room4);
-        rooms.add(room5);
-        rooms.add(room6);
+//        rooms.add(room3);
+//        rooms.add(room4);
+//        rooms.add(room5);
+//        rooms.add(room6);
 
         List<Apartment> apartments1 = new ArrayList<>();
         //100s apartments
@@ -176,20 +176,64 @@ public class BuildingClient {
         Building buildingC = new Building('c', floors);
         Building buildingD = new Building('d', floors);
         Building buildingE = new Building('e', floors);
+        buildings.add(buildingA);
+        buildings.add(buildingB);
+        buildings.add(buildingC);
+        buildings.add(buildingD);
+        buildings.add(buildingE);
 
-
-        ApartmentPerson aman = new ApartmentPerson("Aman",12,5,100);
+        ApartmentPerson aman = new ApartmentPerson("Aman", 12, 5, 100);
         ApartmentPerson john = new ApartmentPerson("John", 14, 5.5, 115);
         ApartmentPerson mike = new ApartmentPerson("Mike", 13, 5.2, 102);
         ApartmentPerson sarah = new ApartmentPerson("Sarah", 16, 5.6, 120);
-        Map<ApartmentPerson,List<Building>> map = new HashMap<>();
-        map.put(aman,buildings);
-        map.put(john,buildings);
-        map.put(mike,buildings);
-        map.put(sarah,buildings);
-
+        Map<ApartmentPerson, List<Building>> map = new HashMap<>();
+        map.put(aman, buildings);
+        map.put(john, buildings);
+        map.put(mike, buildings);
+        map.put(sarah, buildings);
+        check(map, buildings);
     }
-    private static void check(Map<ApartmentPerson,List<Building>> map, Building buildings){
 
+    private static void check(Map<ApartmentPerson,List<Building>> map , List<Building> buildings) {
+
+        //buildings.getFloors();
+        for (Map.Entry<ApartmentPerson, List<Building>> entry : map.entrySet()) {
+            ApartmentPerson person = entry.getKey();
+            List<Building> apartmentBuildings = entry.getValue();
+            String personName =person.name();
+            if (personName.equals("Aman")) {
+                for (Building building : apartmentBuildings) {
+                    List<Floor> floors = building.getFloors();
+                    for (Floor floor : floors) {
+                        List<Apartment> apartments = floor.getApartments();
+                        for (Apartment apartment : apartments) {
+                            if (apartment.getRooms().size() == 2){
+                                System.out.println(building);
+
+                            }
+//                            List<Room> rooms = rooms.getApartments();
+//                            for (Apartment apartment : rooms) {//                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    private static void buildingLoop(Map<ApartmentPerson,List<Building>> map ,){
+        for (Map.Entry<ApartmentPerson, List<Building>> entry : map.entrySet())
+        ApartmentPerson person = entry.getKey();
+        List<Building> apartmentBuildings = entry.getValue();
+        for (Building building : apartmentBuildings)
+
+        List<Floor> floors = building.getFloors();
+        for (Floor floor : floors) {
+            List<Apartment> apartments = floor.getApartments();
+            for (Apartment apartment : apartments) {
+                if (apartment.getRooms().size() == 2) {
+                    System.out.println(building);
+
+                }
+            }
+        }
     }
 }
