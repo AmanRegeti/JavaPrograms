@@ -202,9 +202,9 @@ public class BuildingClient {
 
         check(map);
 
-        countPeople(map, 5, 9, 52, 2);
+        //countPeople(map, 5, 9, 52, 2);
 
-        countPeopleWithBuilding(map, 52, 9);
+        countPeopleWithBuilding(map, 5, 9);
     }
 
     private static void check(Map<ApartmentPerson, List<Building>> map) {
@@ -294,42 +294,45 @@ public class BuildingClient {
             int requiredApartments,
             int requiredRooms) {
 
-
         int peopleCount = 0;
-        boolean hasMatchingBuilding = false;
+
         for (Map.Entry<ApartmentPerson, List<Building>> entry : map.entrySet()) {
 
             ApartmentPerson person = entry.getKey();
             List<Building> buildings = entry.getValue();
 
+            boolean hasMatchingBuilding = false;
 
-
-
-            int apartmentCount = 0;
             for (Building building : buildings) {
 
                 List<Floor> floors = building.getFloors();
 
+                int apartmentCount = 0;
+                boolean allApartmentsMatch = true;
+
                 for (Floor floor : floors) {
+
                     List<Apartment> apartments = floor.getApartments();
-                    apartmentCount = apartments.size();
+                    apartmentCount += apartments.size();
+
                     for (Apartment apartment : apartments) {
 
-                        int roomCount = apartment.getRooms().size();
-
-                        if (roomCount == requiredRooms){
-                            hasMatchingBuilding = true;
-                            }
+                        if (apartment.getRooms().size() != requiredRooms) {
+                            allApartmentsMatch = false;
+                            break;
                         }
+                    }
+
+                    if (!allApartmentsMatch) {
+                        break;
                     }
                 }
 
-                if (apartmentCount == requiredApartments) {
+                if (apartmentCount == requiredApartments && allApartmentsMatch) {
                     hasMatchingBuilding = true;
                     break;
                 }
             }
-
 
             if (hasMatchingBuilding) {
                 peopleCount++;
@@ -339,58 +342,16 @@ public class BuildingClient {
                                 + " has a building with "
                                 + requiredApartments
                                 + " apartments and "
-                                + requiredFloors
-                                + " floors."
+                                + requiredRooms
+                                + " rooms per apartment."
                 );
             }
         }
 
-        System.out.println("Total people with a matching building: " + peopleCount);
+        System.out.println(
+                "Total people with a matching building: " + peopleCount
+        );
     }
 
-    private static boolean checkBuildingRequirements(
-            List<Building> buildings,
-            int requiredBuildings,
-            int requiredFloors,
-            int requiredApartments,
-            int requiredRooms) {
-
-        if (buildings.size() != requiredBuildings) {
-            return false;
-        }
-
-        for (Building building : buildings) {
-
-            List<Floor> floors = building.getFloors();
-
-            if (floors.size() != requiredFloors) {
-                return false;
-            }
-
-            int apartmentCount = 0;
-
-            for (Floor floor : floors) {
-
-                List<Apartment> apartments = floor.getApartments();
-
-                for (Apartment apartment : apartments) {
-
-                    apartmentCount++;
-
-                    List<Room> rooms = apartment.getRooms();
-
-                    if (rooms.size() != requiredRooms) {
-                        return false;
-                    }
-                }
-            }
-
-            if (apartmentCount != requiredApartments) {
-                return false;
-            }
-        }
-
-        return true;
-    }
 }
 
