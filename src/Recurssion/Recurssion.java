@@ -45,6 +45,9 @@ public class Recurssion {
         if (end < start) {
             return 0;
         }
+        if (end == start){
+            return a[end];
+        }
 
         // 2. Solve the current problem
         int s = a[end];
